@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        main {
+            margin: 0 auto;
+            width: 40%;
+        }
+
+        label {
+            display: none;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 1rem;
+            font-size: 1rem;
+        }
+
+        textarea {
+            width: 100%;
+            border-radius: 1rem;
+        }
+
+        .tweets {
+            border: 1px solid #000;
+            padding: 1rem;
+            border-radius: 1rem;
+        }
+
+        .tweet {
+            margin-bottom: 2.5rem;
+            border-left: 0.5rem solid #000;
+            padding-left: 0.5rem;
+        }
+
+        .tweet_timestamp {
+            font-size: 0.75rem;
+        }
+    </style>
+
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Ntweety United</h1>
+        </header>
+
+        <p>Ntweet something: </p>
+        <form method="post">
+            {% csrf_token %}
+            {{ tweet_form }}
+            <button type="submit">Ntweeto</button>
+        </form>
+
+        <h2>Lekwa Ntweets</h2>
+        <div class="tweets">
+            {% for tweet in tweets %}
+                <div class="tweet">
+                    <p> {{ tweet.tweet }} </p>
+                    <p class="tweet_timestamp"> {{ tweet.created_on }} </p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+</body>
+</html>
